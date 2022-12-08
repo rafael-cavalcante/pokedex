@@ -1,0 +1,13 @@
+<div th:if="${mensagem}" th:text="${mensagem}"></div>
+
+<form action="/pokemon/cadastrar/salvar" method="post">
+    <div th:if="${pokemon}">
+        Id: <input type="text" readonly id="id" name="id" th:value="${pokemon.id}">
+    </div>
+    Nome: <input type="text" id="nome" name="nome" th:value="${pokemon?.nome}">
+    Regiao: <select name="regiao">
+        <option th:each="regiao : ${regioes}" th:value="${regiao.id}" th:text="${regiao.nome}"
+            th:selected="${regiao.id == pokemon?.regiao?.id}"></option>
+    </select>
+    <button type="submit"> Cadastrar Pokémon</button>
+</form>
